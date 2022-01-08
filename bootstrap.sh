@@ -1,67 +1,85 @@
 #!/bin/bash
 set -ex
 
-if [ $# != 1 ]; then
-	cat << USAGE
-Usage: $0 proxy
-   Eg: $0 http://127.0.0.1:1088
-USAGE
+SHELL_FOLDER=$(dirname "$0")
+. ${SHELL_FOLDER}/config.sh
+
+if [ -z $ProxyHost ] || [ -z $ProxyPortSocks5 ] || [ -z $ProxyPortHttp ]; then
+	echo "You must fill the config.sh for proxy"
 	exit 1
 fi
 
-SHELL_FOLDER=$(dirname "$0")
+if [ -z $WorkSpace ]; then
+	echo "You must fill the config.sh for workspace"
+	exit 1
+fi
 
-PROXY_SH="${SHELL_FOLDER}/proxy.sh"
-PROXY_SERVER="$1"
+mkdir -p "${SHELL_FOLDER}/bootstrap-gen"
+ConfigSH="${SHELL_FOLDER}/bootstrap-gen/config.sh"
 
-cat > "${PROXY_SH}" << EOF
-export http_proxy="${PROXY_SERVER}"
-export https_proxy="${PROXY_SERVER}"
-export ftp_proxy="${PROXY_SERVER}"
-export all_proxy="${PROXY_SERVER}"
-export ALL_PROXY="${PROXY_SERVER}"
+function InstallTools()
+{
+	sudo apt install socat
+	sudo apt install git-email
+	sudo apt install msmtp
+}
+
+function ConfigProxyWget()
+{
+	local HttpProxy="http://${ProxyHost}:${ProxyPortHttp}"
+	cat > ~/.wgetrc << EOF_WGETRC
+https_proxy = ${HttpProxy}
+http_proxy = ${HttpProxy}
+ftp_proxy = ${HttpProxy}
+no_proxy = "127.0.0.1"
+use_proxy = on
+EOF_WGETRC
+	cat > "${ConfigSH}" << EOF
+export http_proxy="${HttpProxy}"
+export https_proxy="${HttpProxy}"
+export ftp_proxy="${HttpProxy}"
+export all_proxy="${HttpProxy}"
+export ALL_PROXY="${HttpProxy}"
 export no_proxy="127.0.0.1"
 export NO_PROXY=\$no_proxy
 EOF
 
-if [ -f ~/.wgetrc ]; then
-	echo "机器自带有wgetrc, 未设置"
-else
-	cat > ~/.wgetrc << EOF_WGETRC
-https_proxy = ${PROXY_SERVER}
-http_proxy = ${PROXY_SERVER}
-ftp_proxy = ${PROXY_SERVER}
-no_proxy = "127.0.0.1"
-use_proxy = on
-EOF_WGETRC
-fi
+}
 
-mkdir -p ~/.local/bin
-
-if [ ! -f ~/.local/bin/oe-git-proxy ]; then
-	which socat  ||  sudo apt install socat
+function ConfigProxyGit()
+{
 	wget http://git.yoctoproject.org/cgit/cgit.cgi/poky/plain/scripts/oe-git-proxy
+	mkdir -p ~/.local/bin
 	mv oe-git-proxy ~/.local/bin/oe-git-proxy
 	chmod +x ~/.local/bin/oe-git-proxy
-fi
+	grep "GIT_PROXY_COMMAND" "${ConfigSH}" || echo "export GIT_PROXY_COMMAND=oe-git-proxy" >> "${ConfigSH}"
 
-LOCAL_SH="${SHELL_FOLDER}/local.sh"
-if [ x"${USER}" = x"wangzq" ]; then
-	cat > "${LOCAL_SH}" << EOF_LOCAL
-export _WORKSPACE_="${HOME}/workspace"
-EOF_LOCAL
-elif [ x"${USER}" = x"openbmc" ]; then
-	cat > "${LOCAL_SH}" << EOF_LOCAL
-export _WORKSPACE_=/build/obmc/gerrit-tracker
-EOF_LOCAL
-fi
+	grep "github.com" ~/.ssh/config || cat >> ~/.ssh/config <<EOF
 
-SHELL_RC=~/.bashrc
+Host github.com
+	User git
+	ProxyCommand nc -x ${ProxyHost}:${ProxyPortHttp} -Xconnect %h %p
+EOF
+}
 
-if [ -f ~/.zshrc ]; then
-	SHELL_RC=~/.zshrc
-fi
+function ConfigWorkSpace()
+{
+	grep "_WORKSPACE_" "${ConfigSH}" || echo "export _WORKSPACE_=${WorkSpace}" >> "${ConfigSH}"
+}
 
-SOURCE_CMD="source ~/.local/etc/config/init.sh"
+function AddInitToShellRc()
+{
+	local SHELL_RC=~/.bashrc
+	if [ -f ~/.zshrc ]; then
+		SHELL_RC=~/.zshrc
+	fi
 
-grep "${SOURCE_CMD}" ${SHELL_RC} || { echo ""; echo "${SOURCE_CMD}"; } >> "${SHELL_RC}"
+	SOURCE_CMD="source ~/.local/etc/config/init.sh"
+	grep "${SOURCE_CMD}" ${SHELL_RC} || { echo ""; echo "${SOURCE_CMD}"; } >> "${SHELL_RC}"
+}
+
+InstallTools
+ConfigProxyWget
+ConfigProxyGit
+ConfigWorkSpace
+AddInitToShellRc

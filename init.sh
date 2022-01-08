@@ -10,12 +10,8 @@ if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -f "$HOME/.local/etc/config/proxy.sh" ]; then
-	. "${HOME}/.local/etc/config/proxy.sh"
-fi
-
-if [ -f "$HOME/.local/etc/config/local.sh" ]; then
-	. "${HOME}/.local/etc/config/local.sh"
+if [ -f "$HOME/.local/etc/config/bootstrap-gen/config.sh" ]; then
+	. "${HOME}/.local/etc/config/bootstrap-gen/config.sh"
 fi
 
 if [ -n "$PATH" ]; then
