@@ -78,8 +78,16 @@ function AddInitToShellRc()
 	grep "${SOURCE_CMD}" ${SHELL_RC} || { echo ""; echo "${SOURCE_CMD}"; } >> "${SHELL_RC}"
 }
 
+function InstallDotFiles()
+{
+	pushd ${SHELL_FOLDER}/dotfiles
+	./init.sh
+	popd
+}
+
 InstallTools
 ConfigProxyWget
 ConfigProxyGit
 ConfigWorkSpace
 AddInitToShellRc
+InstallDotFiles
