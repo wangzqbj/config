@@ -35,7 +35,7 @@ function run-ut()
 		"$UT_PATH/run-unit-test-docker.sh"
 }
 
-function run-qemu-ci()
+function run-robot-ci()
 {
 	TEST_REPO="${_WORKSPACE_}/openbmc-test-automation"
 	cd ${TEST_REPO}
