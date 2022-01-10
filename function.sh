@@ -1,4 +1,8 @@
 
+if [ -d "$HOME/.local/etc/config/tools" ];then
+	export PATH="$HOME/.local/etc/config/tools:$PATH"
+fi
+
 INSPUR_TOOLS="${_WORKSPACE_}/tools"
 
 alias inspur-gerrit='${INSPUR_TOOLS}/inspur-gerrit'
