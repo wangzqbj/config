@@ -15,14 +15,6 @@ fi
 ./gitconfig.sh "${GIT_USER_NAME}" "${GIT_USER_EMAIL}"
 ./msmtprc.sh "${ProxyHost}" "${ProxyPortSocks5}" "${GMAIL_APP_PW}"
 
-# https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
-cat <<EOF|tic -x -
-tmux|tmux terminal multiplexer,
-    ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
-    use=xterm+tmux, use=screen,
-
-tmux-256color|tmux with 256 colors,
-    use=xterm+256setaf, use=tmux,
-EOF
+# 遇到斜体/色彩支持问题，参考: https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
 
 cp ./tmux.conf ~/.tmux.conf
