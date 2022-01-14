@@ -31,4 +31,6 @@ function main()
 }
 
 # Remove the ansi color https://superuser.com/questions/380772/removing-ansi-color-codes-from-text-stream
-main | sed 's/\x1b\[[0-9;]*[mGKF]//g' 
+# Remove the date output
+# Remove bash +x output
+main 2>/dev/null | sed 's/\x1b\[[0-9;]*[mGKF]//g' | sed '/年/d'
