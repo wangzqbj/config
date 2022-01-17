@@ -8,7 +8,7 @@
 				"action": "copy",
 				"singleLine": false
 			},
-			"keys": "ctrl+c"
+			"keys": "ctrl+shift+c"
 		},
 		{
 			"command": "find",
