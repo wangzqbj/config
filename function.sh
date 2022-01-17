@@ -6,6 +6,7 @@ fi
 INSPUR_TOOLS="${_WORKSPACE_}/tools"
 
 alias inspur-gerrit='${INSPUR_TOOLS}/inspur-gerrit'
+alias inspur-gerrit-cli='ssh inspur.gerrit gerrit'
 alias run-qemu='${INSPUR_TOOLS}/run-qemu.sh'
 
 function copy-bmc-image()
@@ -37,6 +38,14 @@ function run-ut()
 	UT_PATH="${_WORKSPACE_}/openbmc-build-scripts"
 	UNIT_TEST_PKG="$(basename $REPO)" WORKSPACE="$(dirname $REPO)" \
 		"$UT_PATH/run-unit-test-docker.sh"
+}
+
+function run-ut-test-only()
+{
+	REPO="$(git rev-parse --show-toplevel)"
+	UT_PATH="${_WORKSPACE_}/openbmc-build-scripts"
+	UNIT_TEST_PKG="$(basename $REPO)" WORKSPACE="$(dirname $REPO)" \
+		NO_FORMAT_CODE=1 TEST_ONLY=1  "$UT_PATH/run-unit-test-docker.sh"
 }
 
 function run-robot-ci()
