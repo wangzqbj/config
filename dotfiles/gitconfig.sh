@@ -22,4 +22,7 @@ cat > ~/.gitconfig << EOF
 [sendemail]
 	smtpserver = /usr/bin/msmtp
 	suppresscc = self
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
 EOF
