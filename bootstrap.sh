@@ -2,7 +2,7 @@
 set -ex
 
 SHELL_FOLDER=$(dirname "$0")
-. ${SHELL_FOLDER}/config.sh
+. ${SHELL_FOLDER}/myenv.sh
 
 if [ -z $ProxyHost ] || [ -z $ProxyPortSocks5 ] || [ -z $ProxyPortHttp ]; then
 	echo "You must fill the config.sh for proxy"
@@ -15,6 +15,9 @@ if [ -z $WorkSpace ]; then
 fi
 
 mkdir -p "${SHELL_FOLDER}/bootstrap-gen"
+
+cp config.sh "${SHELL_FOLDER}/bootstrap-gen/config.sh"
+
 ConfigSH="${SHELL_FOLDER}/bootstrap-gen/config.sh"
 
 function InstallTools()
@@ -34,7 +37,7 @@ ftp_proxy = ${HttpProxy}
 no_proxy = "127.0.0.1"
 use_proxy = on
 EOF_WGETRC
-	cat > "${ConfigSH}" << EOF
+	cat >> "${ConfigSH}" << EOF
 export http_proxy="${HttpProxy}"
 export https_proxy="${HttpProxy}"
 export ftp_proxy="${HttpProxy}"

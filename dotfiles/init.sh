@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ../config.sh
+. ../myenv.sh
 
 if [ -z "${GIT_USER_NAME}" ] || [ -z "${GIT_USER_EMAIL}" ] ; then
 	echo "You must fill the config.sh for git"
