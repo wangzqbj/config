@@ -38,6 +38,7 @@ no_proxy = "127.0.0.1"
 use_proxy = on
 EOF_WGETRC
 	cat >> "${ConfigSH}" << EOF
+
 export http_proxy="${HttpProxy}"
 export https_proxy="${HttpProxy}"
 export ftp_proxy="${HttpProxy}"
