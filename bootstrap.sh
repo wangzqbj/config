@@ -88,9 +88,15 @@ function InstallDotFiles()
 	popd
 }
 
+function InstallXdgConfig()
+{
+	cp -r ${SHELL_FOLDER}/xdg-config/* ~/.config
+}
+
 InstallTools
 ConfigProxyWget
 ConfigProxyGit
 ConfigWorkSpace
 AddInitToShellRc
 InstallDotFiles
+InstallXdgConfig
