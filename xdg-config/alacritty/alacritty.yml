@@ -1,6 +1,9 @@
 shell:
   program: tmux
 
+window:
+  startup_mode: Maximized
+
 font:
   normal:
     family: "DejaVuSansMono Nerd Font Mono"
