@@ -14,8 +14,8 @@ if [ -n "$PATH" ]; then
 	while [ -n "$old_PATH" ]; do
 		x=${old_PATH%%:*}
 		case $PATH: in
-			*:"$x":*) ;;         
-			*) PATH=$PATH:$x;;  
+			*:"$x":*) ;;
+			*) PATH=$PATH:$x;;
 		esac
 		old_PATH=${old_PATH#*:}
 	done
@@ -25,4 +25,11 @@ fi
 
 if [ -f "$HOME/.local/etc/config/function.sh" ]; then
 	. "${HOME}/.local/etc/config/function.sh"
+fi
+
+if [ -n "$ZSH_VERSION" ]; then
+	export ZSH=$HOME/.oh-my-zsh
+	ZSH_THEME="robbyrussell"
+	plugins=(vscode z fzf jsontools vi-mode)
+	source $ZSH/oh-my-zsh.sh
 fi
