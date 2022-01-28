@@ -18,3 +18,10 @@ fi
 # 遇到斜体/色彩支持问题，参考: https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
 
 cp ./tmux.conf ~/.tmux.conf
+
+## dump gnome-terminal-config
+# dconf dump /org/gnome/terminal/ > ./gnome-terminal.conf
+
+
+cat ./gnome-terminal.conf | dconf load /org/gnome/terminal/
+
