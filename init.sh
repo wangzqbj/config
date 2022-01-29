@@ -28,8 +28,7 @@ if [ -f "$HOME/.local/etc/config/function.sh" ]; then
 fi
 
 if [ -n "$ZSH_VERSION" ]; then
-	export ZSH=$HOME/.oh-my-zsh
-	ZSH_THEME="robbyrussell"
-	plugins=(vscode z fzf jsontools vi-mode)
-	source $ZSH/oh-my-zsh.sh
+	if [ -f "$HOME/.local/etc/config/zsh.sh" ]; then
+		. "${HOME}/.local/etc/config/zsh.sh"
+	fi
 fi
