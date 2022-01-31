@@ -25,6 +25,7 @@ function InstallTools()
 	sudo apt install socat
 	sudo apt install git-email
 	sudo apt install msmtp
+	sudo apt install global
 }
 
 function ConfigProxyWget()
