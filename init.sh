@@ -5,8 +5,12 @@ else
 	return
 fi
 
-if [ -f "$HOME/.local/etc/config/bootstrap-gen/config.sh" ]; then
-	. "${HOME}/.local/etc/config/bootstrap-gen/config.sh"
+if [ -f "$HOME/.local/etc/config/bootstrap-gen/private-env.sh" ]; then
+	. "${HOME}/.local/etc/config/bootstrap-gen/private-env.sh"
+fi
+
+if [ -f "$HOME/.local/etc/config/config.sh.sh" ]; then
+	. "${HOME}/.local/etc/config/config.sh"
 fi
 
 if [ -n "$PATH" ]; then
