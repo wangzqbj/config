@@ -9,7 +9,7 @@ if [ -f "$HOME/.local/etc/config/bootstrap-gen/private-env.sh" ]; then
 	. "${HOME}/.local/etc/config/bootstrap-gen/private-env.sh"
 fi
 
-if [ -f "$HOME/.local/etc/config/config.sh.sh" ]; then
+if [ -f "$HOME/.local/etc/config/config.sh" ]; then
 	. "${HOME}/.local/etc/config/config.sh"
 fi
 
