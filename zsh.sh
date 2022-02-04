@@ -15,7 +15,6 @@ antigen bundle zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle ael-code/zsh-colored-man-pages
 
 antigen apply
 
