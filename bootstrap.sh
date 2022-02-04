@@ -14,11 +14,12 @@ if [ -z $WorkSpace ]; then
 	exit 1
 fi
 
+rm -rf "${SHELL_FOLDER}/bootstrap-gen"
 mkdir -p "${SHELL_FOLDER}/bootstrap-gen"
 
-cp config.sh "${SHELL_FOLDER}/bootstrap-gen/config.sh"
+PrivateENV="${SHELL_FOLDER}/bootstrap-gen/private-env.sh"
+touch "$PrivateENV"
 
-ConfigSH="${SHELL_FOLDER}/bootstrap-gen/config.sh"
 
 function InstallTools()
 {
@@ -38,7 +39,7 @@ ftp_proxy = ${HttpProxy}
 no_proxy = "127.0.0.1"
 use_proxy = on
 EOF_WGETRC
-	cat >> "${ConfigSH}" << EOF
+	cat >> "${PrivateENV}" << EOF
 
 export http_proxy="${HttpProxy}"
 export https_proxy="${HttpProxy}"
@@ -57,7 +58,7 @@ function ConfigProxyGit()
 	mkdir -p ~/.local/bin
 	mv oe-git-proxy ~/.local/bin/oe-git-proxy
 	chmod +x ~/.local/bin/oe-git-proxy
-	grep "GIT_PROXY_COMMAND" "${ConfigSH}" || echo "export GIT_PROXY_COMMAND=oe-git-proxy" >> "${ConfigSH}"
+	grep "GIT_PROXY_COMMAND" "${PrivateENV}" || echo "export GIT_PROXY_COMMAND=oe-git-proxy" >> "${PrivateENV}"
 
 	grep "github.com" ~/.ssh/config || cat >> ~/.ssh/config <<EOF
 
@@ -69,7 +70,7 @@ EOF
 
 function ConfigWorkSpace()
 {
-	grep "_WORKSPACE_" "${ConfigSH}" || echo "export _WORKSPACE_=${WorkSpace}" >> "${ConfigSH}"
+	grep "_WORKSPACE_" "${PrivateENV}" || echo "export _WORKSPACE_=${WorkSpace}" >> "${PrivateENV}"
 }
 
 function AddInitToShellRc()

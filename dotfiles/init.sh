@@ -23,5 +23,5 @@ cp ./tmux.conf ~/.tmux.conf
 # dconf dump /org/gnome/terminal/ > ./gnome-terminal.conf
 
 
-cat ./gnome-terminal.conf | dconf load /org/gnome/terminal/
+which gnome-terminal && cat ./gnome-terminal.conf | dconf load /org/gnome/terminal/
 
