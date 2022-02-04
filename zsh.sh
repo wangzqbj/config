@@ -19,5 +19,6 @@ antigen bundle ael-code/zsh-colored-man-pages
 
 antigen apply
 
-
+autoload -Uz compinit
+compinit
 compdef vman="man"
