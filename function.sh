@@ -56,3 +56,23 @@ function run-robot-ci()
 		-v IPMI_PORT:2623 --argumentfile test_lists/QEMU_CI ./tests ./redfish ./ipmi
 
 }
+
+function weather()
+{
+	local city="${1:-jinan}"
+	if [ -x "$(which wget)" ]; then
+		wget -qO- "wttr.in/~${city}"
+	elif [ -x "$(which curl)" ]; then
+		curl "wttr.in/~${city}"
+	fi
+
+}
+
+function my-public-ip() 
+{
+	if command -v curl &> /dev/null; then
+		curl ifconfig.co
+	elif command -v wget &> /dev/null; then
+		wget -qO- ifconfig.co
+	fi
+}
