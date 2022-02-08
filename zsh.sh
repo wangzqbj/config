@@ -6,7 +6,6 @@ source $SHELL_FOLDER/tools/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle command-not-found
-antigen use oh-my-zsh
 antigen theme robbyrussell
 
 antigen bundle skywind3000/z.lua
