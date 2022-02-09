@@ -53,8 +53,9 @@ class Issue():
             self.__parse_edited_message(tf)
 
     def submit(self, project_name: str):
-        print(self.title)
-        print(self.description)
+        if not self.title:
+            print("title is empty, ignore...")
+            return
         project = self.gl.projects.get(project_name)
         issue = project.issues.create(
             {'title': self.title, 'description': self.description})
