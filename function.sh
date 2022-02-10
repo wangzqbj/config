@@ -3,12 +3,6 @@ if [ -d "$HOME/.local/etc/config/tools" ];then
 	export PATH="$HOME/.local/etc/config/tools:$PATH"
 fi
 
-INSPUR_TOOLS="${_WORKSPACE_}/tools"
-
-alias inspur-gerrit='${INSPUR_TOOLS}/inspur-gerrit'
-alias inspur-gerrit-cli='ssh inspur.gerrit gerrit'
-alias run-qemu='${INSPUR_TOOLS}/run-qemu.sh'
-
 function copy-bmc-image()
 {
 	dest=$1
@@ -21,41 +15,7 @@ function copy-bmc-image()
 	fi
 }
 
-alias run-qemu-new-image="copy-bmc-image ./ && run-qemu ./image-bmc"
-
-alias commit-tracker='${INSPUR_TOOLS}/infrastructure/commit-tracker.sh'
-alias build-ut-docker='${INSPUR_TOOLS}/infrastructure/build-phosphor-dbus-interfaces-docker'
-
-function gerrit-hook()
-{
-	scp inspur.gerrit:hooks/commit-msg \
-		$(git rev-parse --show-toplevel)/.git/hooks/
-}
-
-function run-ut()
-{
-	REPO="$(git rev-parse --show-toplevel)"
-	UT_PATH="${_WORKSPACE_}/openbmc-build-scripts"
-	UNIT_TEST_PKG="$(basename $REPO)" WORKSPACE="$(dirname $REPO)" \
-		"$UT_PATH/run-unit-test-docker.sh"
-}
-
-function run-ut-test-only()
-{
-	REPO="$(git rev-parse --show-toplevel)"
-	UT_PATH="${_WORKSPACE_}/openbmc-build-scripts"
-	UNIT_TEST_PKG="$(basename $REPO)" WORKSPACE="$(dirname $REPO)" \
-		NO_FORMAT_CODE=1 TEST_ONLY=1  "$UT_PATH/run-unit-test-docker.sh"
-}
-
-function run-robot-ci()
-{
-	TEST_REPO="${_WORKSPACE_}/openbmc-test-automation"
-	cd ${TEST_REPO}
-	robot -v OPENBMC_HOST:127.0.0.1  -v OPENBMC_PASSWORD:0penBmc -v SSH_PORT:2222 -v HTTPS_PORT:2443 \
-		-v IPMI_PORT:2623 --argumentfile test_lists/QEMU_CI ./tests ./redfish ./ipmi
-
-}
+alias run-qemu-new-image="copy-bmc-image ./ && obmc-qemu ./image-bmc"
 
 function weather()
 {
