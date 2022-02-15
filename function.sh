@@ -19,6 +19,30 @@ function copy-bmc-image()
 	fi
 }
 
+function bitbake-shared()
+{
+	local machine
+	machine=$1
+	if [ -z $machine ]; then
+		echo -e "\033[31mplease specified a machine, eg: fp5280g2\033[0m"
+		return
+	fi
+
+	local conf_path
+	conf_path="$_WORKSPACE_/openbmc/build/$machine/conf/local.conf"
+	if [ ! -f $conf_path ]; then
+		echo -e "\033[31mcan not find the file: $conf_path\033[0m"
+		return
+	fi
+	local dl_dir
+	dl_dir="DL_DIR=\"$_WORKSPACE_/bitbake_downloads\""
+	local sstate
+	sstate="SSTATE_DIR=\"$_WORKSPACE_/bitbake_sharedstatecache\""
+
+	grep "$dl_dir" $conf_path || { echo ""; echo "$dl_dir"; echo "$sstate" } >> "$conf_path"
+
+}
+
 function weather()
 {
 	local city="${1:-jinan}"
