@@ -12,6 +12,7 @@ antigen bundle skywind3000/z.lua
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#708069"
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 antigen bundle zsh-users/zsh-syntax-highlighting
 
