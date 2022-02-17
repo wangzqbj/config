@@ -11,3 +11,6 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 export PATH="$PATH:$HOME/.vim/plugged/vim-superman/bin"
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
