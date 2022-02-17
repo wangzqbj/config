@@ -21,3 +21,5 @@ antigen apply
 autoload -Uz compinit
 compinit
 compdef vman="man"
+
+RPROMPT="%{$fg[green]%}[%D{%F %T}]"
