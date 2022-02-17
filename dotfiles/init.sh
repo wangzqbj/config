@@ -19,6 +19,7 @@ fi
 
 cp ./tmux.conf ~/.tmux.conf
 cp ./pam_environment ~/.pam_environment
+cp ./tigrc ~/.tigrc
 
 ## dump gnome-terminal-config
 # dconf dump /org/gnome/terminal/ > ./gnome-terminal.conf
