@@ -10,6 +10,8 @@ if [ -f "$HOME/.cargo/env" ]; then
 	. "${HOME}/.cargo/env"
 fi
 
+export UBUNTU_MIRROR=http://mirrors.aliyun.com/ubuntu/
+
 export PATH="$PATH:$HOME/.vim/plugged/vim-superman/bin"
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
