@@ -62,3 +62,9 @@ function my-public-ip()
 		wget -qO- ifconfig.co
 	fi
 }
+
+function installKitty()
+{
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+    installer=nightly
+}
