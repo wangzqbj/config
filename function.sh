@@ -65,10 +65,9 @@ function copy-bmc-image()
 
 	IMAGE_PATH="${_WORKSPACE_}/openbmc/build/$machine/tmp/deploy/images/$machine/image-bmc"
 	if cp "${IMAGE_PATH}" "${dest}"; then
-		echo "copy ${IMAGE_PATH} to ${dest} successfully"
+		log_ok "copy ${IMAGE_PATH} to ${dest} successfully"
 	else
-		echo -e "\033[31mcopy ${IMAGE_PATH} to ${dest} failed\033[0m"
-		exit 1
+		log_fatal "copy ${IMAGE_PATH} to ${dest} failed"
 	fi
 }
 
@@ -77,14 +76,14 @@ function bitbake-shared()
 	local machine
 	machine=$1
 	if [ -z $machine ]; then
-		echo -e "\033[31mplease specified a machine, eg: fp5280g2\033[0m"
+		log_error "please specified a machine, eg: fp5280g2"
 		return
 	fi
 
 	local conf_path
 	conf_path="$_WORKSPACE_/openbmc/build/$machine/conf/local.conf"
 	if [ ! -f $conf_path ]; then
-		echo -e "\033[31mcan not find the file: $conf_path\033[0m"
+		log_error "can not find the file: $conf_path"
 		return
 	fi
 	local dl_dir
