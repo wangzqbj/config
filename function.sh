@@ -67,7 +67,8 @@ function copy-bmc-image()
 	if cp "${IMAGE_PATH}" "${dest}"; then
 		log_ok "copy ${IMAGE_PATH} to ${dest} successfully"
 	else
-		log_fatal "copy ${IMAGE_PATH} to ${dest} failed"
+		log_error "copy ${IMAGE_PATH} to ${dest} failed"
+		return
 	fi
 }
 
