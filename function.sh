@@ -116,8 +116,25 @@ function my-public-ip()
 	fi
 }
 
-function installKitty()
+function install-kitty()
 {
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
     installer=nightly
+}
+
+
+function update-inspur-tools()
+{
+	pushd "$HOME/.inspur-obmc-misc"
+	if [ -d tools ]; then
+		pushd tools
+		git pull origin master || { popd; rm -rf tools; git clone ssh://inspur.gerrit/openbmc/tools; }
+		popd
+	else
+		git clone ssh://inspur.gerrit/openbmc/tools
+	fi
+	popd
+
+	"$HOME/.inspur-obmc-misc/tools/bootstrap.sh"
+
 }
