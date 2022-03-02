@@ -23,4 +23,4 @@ compinit
 compdef vman="man"
 
 alias man="vman"
-RPROMPT="%{$fg[green]%}[%D{%F %T}]"
+RPROMPT="%{$fg[green]%}[%D{%T}]"
