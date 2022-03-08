@@ -17,8 +17,8 @@ cat > ~/.gitconfig << EOF
 	name = ${GIT_USER_NAME}
 [core]
 	editor = vim
-[alias]
-	log1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) %G? - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+[rebase]
+	autosquash = true
 [sendemail]
 	smtpserver = /usr/bin/msmtp
 	suppresscc = self
