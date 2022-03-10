@@ -159,3 +159,9 @@ function obmc-qemu-scp()
 	fi
 }
 
+function obmc-coredump-unzip()
+{
+	local d=${1%%.*}
+	tar xvf $1
+	zstd -d $d/core*.zst
+}
