@@ -138,3 +138,24 @@ function update-inspur-tools()
 	"$HOME/.inspur-obmc-misc/tools/bootstrap.sh"
 
 }
+
+function obmc-qemu-login()
+{
+	sshpass -p '0penBmc' ssh local-qemu
+}
+
+function obmc-qemu-scp()
+{
+	local src="$1"
+	local dest="$2"
+	if [ -z $dest ]; then
+		dest="/tmp"
+	fi
+
+	if sshpass -p '0penBmc' scp -r $src local-qemu:$dest; then
+		log_ok "Copy $src to local-qemu:$dest successfully"
+	else
+		log_error "Copy $src to local-qemu:$dest failed"
+	fi
+}
+
