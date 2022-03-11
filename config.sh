@@ -16,3 +16,6 @@ export PATH="$PATH:$HOME/.vim/plugged/vim-superman/bin"
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+
+alias ls='ls --color=tty --hyperlink=auto'

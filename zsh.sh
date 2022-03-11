@@ -24,3 +24,5 @@ compdef vman="man"
 
 alias man="vman"
 RPROMPT="%{$fg[green]%}[%D{%T}]"
+
+compdef _rg hg

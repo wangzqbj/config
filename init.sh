@@ -9,6 +9,12 @@ if [ -f "$HOME/.local/etc/config/bootstrap-gen/private-env.sh" ]; then
 	. "${HOME}/.local/etc/config/bootstrap-gen/private-env.sh"
 fi
 
+if [ -n "$ZSH_VERSION" ]; then
+	if [ -f "$HOME/.local/etc/config/zsh.sh" ]; then
+		. "${HOME}/.local/etc/config/zsh.sh"
+	fi
+fi
+
 if [ -f "$HOME/.local/etc/config/config.sh" ]; then
 	. "${HOME}/.local/etc/config/config.sh"
 fi
@@ -29,10 +35,4 @@ fi
 
 if [ -f "$HOME/.local/etc/config/function.sh" ]; then
 	. "${HOME}/.local/etc/config/function.sh"
-fi
-
-if [ -n "$ZSH_VERSION" ]; then
-	if [ -f "$HOME/.local/etc/config/zsh.sh" ]; then
-		. "${HOME}/.local/etc/config/zsh.sh"
-	fi
 fi
