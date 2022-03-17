@@ -18,5 +18,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
-alias ls='ls --color=tty --hyperlink=auto'
-alias icat="kitty +kitten icat"
+if [ $TERM = "xterm-kitty" ]; then
+	alias ls='ls --color=tty --hyperlink=auto'
+	alias icat="kitty +kitten icat"
+fi
