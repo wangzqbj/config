@@ -107,7 +107,7 @@ function weather()
 
 }
 
-function my-public-ip() 
+function my-public-ip()
 {
 	if command -v curl &> /dev/null; then
 		curl ifconfig.co
@@ -165,3 +165,12 @@ function obmc-coredump-unzip()
 	tar xvf $1
 	zstd -d $d/core*.zst
 }
+
+function obmc-copy-ci-logs()
+{
+	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/report.html ./
+	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/log.html ./
+	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/output.xml ./
+	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/logs ./
+}
+
