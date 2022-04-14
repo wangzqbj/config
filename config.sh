@@ -24,3 +24,7 @@ if [ $TERM = "xterm-kitty" ]; then
 	alias ls='ls --color=tty --hyperlink=auto'
 	alias icat="kitty +kitten icat"
 fi
+
+if [ x$OPENBMC_SDK = x"Enabled" ]; then
+	source /usr/local/oecore-x86_64/environment-setup-arm1176jzs-openbmc-linux-gnueabi
+fi
