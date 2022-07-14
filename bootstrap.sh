@@ -38,6 +38,8 @@ function InstallTools()
 
 	sudo apt install cmake
 	sudo apt install gonme-tweaks
+	
+	sudo apt install chrpath diffstat gawk lz4
 }
 
 function ConfigProxyWget()
