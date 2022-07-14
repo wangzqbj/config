@@ -23,10 +23,21 @@ touch "$PrivateENV"
 
 function InstallTools()
 {
+	sudo apt install curl
+	sudo apt install vim
+	sudo apt install git
+	sudo apt install ripgrep
 	sudo apt install socat
 	sudo apt install git-email
 	sudo apt install msmtp
 	sudo apt install global
+	sudo apt install python3-pip
+	pip3 install pygments
+	sudo apt install fcitx5 fcitx5-chinese-addons
+	sudo apt remove ibus
+
+	sudo apt install cmake
+	sudo apt install gonme-tweaks
 }
 
 function ConfigProxyWget()
