@@ -26,5 +26,5 @@ if [ $TERM = "xterm-kitty" ]; then
 fi
 
 if [ x$OPENBMC_SDK = x"Enabled" ]; then
-	source /usr/local/oecore-x86_64/environment-setup-arm1176jzs-openbmc-linux-gnueabi
+	source /usr/local/oecore-x86_64/environment-setup-armv7ahf-vfpv4d16-openbmc-linux-gnueabi
 fi
