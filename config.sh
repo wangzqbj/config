@@ -17,7 +17,7 @@ export UBUNTU_MIRROR=http://mirrors.aliyun.com/ubuntu/
 
 export PATH="$PATH:$HOME/.vim/plugged/vim-superman/bin"
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden -g "!{node_modules/*,.git/*}"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 if [ $TERM = "xterm-kitty" ]; then
