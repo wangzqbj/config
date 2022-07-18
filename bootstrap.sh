@@ -42,6 +42,8 @@ function InstallTools()
 	sudo apt install chrpath diffstat gawk lz4
 	sudo apt install clang-format
 	sudo apt install imagemagick
+
+	sudo apt install python3-autopep8
 }
 
 function ConfigProxyWget()
