@@ -44,6 +44,7 @@ function InstallTools()
 	sudo apt install imagemagick
 
 	sudo apt install python3-autopep8
+	sudo apt install git-review
 }
 
 function ConfigProxyWget()
