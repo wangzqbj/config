@@ -23,6 +23,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 if [ $TERM = "xterm-kitty" ]; then
 	alias ls='ls --color=tty --hyperlink=auto'
 	alias icat="kitty +kitten icat"
+	alias ssh="kitty +kitten ssh"
 fi
 
 if [ x$OPENBMC_SDK = x"Enabled" ]; then

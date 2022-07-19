@@ -45,6 +45,8 @@ function InstallTools()
 
 	sudo apt install python3-autopep8
 	sudo apt install git-review
+	sudo apt install npm
+	sudo npm install -g fixjson
 }
 
 function ConfigProxyWget()
