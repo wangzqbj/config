@@ -47,6 +47,7 @@ function InstallTools()
 	sudo apt install git-review
 	sudo apt install npm
 	sudo npm install -g fixjson
+	sudo apt install xsel
 }
 
 function ConfigProxyWget()
@@ -86,6 +87,12 @@ Host github.com
 	User git
 	ProxyCommand nc -x ${ProxyHost}:${ProxyPortHttp} -Xconnect %h %p
 EOF
+}
+
+function ConfigProxySnap()
+{
+	sudo snap set system proxy.http="http://${ProxyHost}:${ProxyPortHttp}"
+	sudo snap set system proxy.https="http://${ProxyHost}:${ProxyPortHttp}"
 }
 
 function ConfigWorkSpace()
