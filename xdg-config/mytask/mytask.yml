@@ -1,0 +1,7 @@
+Host:
+  url: https://10.151.12.63/
+  private_token: xxxxxxxxx
+
+Project:
+  name: openbmc/openbmc-task
+
