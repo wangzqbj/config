@@ -48,6 +48,7 @@ function InstallTools()
 	sudo apt install npm
 	sudo npm install -g fixjson
 	sudo apt install xsel
+	sudo apt install universal-ctags
 }
 
 function ConfigProxyWget()
