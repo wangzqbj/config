@@ -25,4 +25,13 @@ cat > ~/.gitconfig << EOF
 [oh-my-zsh]
 	hide-status = 1
 	hide-dirty = 1
+[advice]
+	skippedCherryPicks = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[safe]
+	directory = *
 EOF
