@@ -46,7 +46,11 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+
+# start a gvim
 bindsym $mod+g exec gvim
+
+bindsym $mod+m exec i3lock -i ~/Pictures/ubuntu.png
 
 # kill focused window
 bindsym $mod+Shift+q kill
