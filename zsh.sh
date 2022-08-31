@@ -9,6 +9,9 @@ antigen bundle command-not-found
 antigen theme robbyrussell
 
 antigen bundle skywind3000/z.lua
+antigen bundle changyuheng/fz
+function _z() { _zlua "$@"; }
+
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
