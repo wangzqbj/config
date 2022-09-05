@@ -56,6 +56,15 @@ function q-ansicolors
         echo "# Sedika Signing off for now ;->"
 }
 
+function tpeek()
+{
+	if [ -z $TMUX ]; then
+		echo "not in tmux"
+		return;
+	fi
+	tmux split-window -p 33 "$EDITOR" "$@" || return;
+}
+
 function copy-bmc-image()
 {
 	local machine
