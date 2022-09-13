@@ -13,8 +13,6 @@ if [ -d "$HOME/.local/go" ]; then
 	fi
 fi
 
-export UBUNTU_MIRROR=http://mirrors.aliyun.com/ubuntu/
-
 export PATH="$PATH:$HOME/.vim/plugged/vim-superman/bin"
 
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden -g "!{node_modules/*,.git/*}"'
