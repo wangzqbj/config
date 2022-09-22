@@ -91,7 +91,8 @@ function bitbake-shared()
 	fi
 
 	local conf_path
-	conf_path="$_WORKSPACE_/openbmc/build/$machine/conf/local.conf"
+	repo_path=$(git rev-parse --show-toplevel)
+	conf_path="$repo_path/build/$machine/conf/local.conf"
 	if [ ! -f $conf_path ]; then
 		log_error "can not find the file: $conf_path"
 		return
