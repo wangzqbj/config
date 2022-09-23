@@ -1,0 +1,20 @@
+session_name: openbmc-dev
+windows:
+  - window_name: build nf5280m7
+    options:
+      automatic-rename: 'off'
+    panes:
+      - shell_command:
+        - source setup nf5280m7
+        start_directory: "${_WORKSPACE_}/openbmc"
+  - window_name: qemu
+    options:
+      automatic-rename: 'off'
+    panes:
+      - shell_command:
+        start_directory: "${_WORKSPACE_}/qemu-img"
+  - window_name: misc
+    focus: true
+    panes:
+      - shell_command:
+        start_directory: "${_WORKSPACE_}"
