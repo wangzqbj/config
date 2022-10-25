@@ -49,6 +49,7 @@ function InstallTools()
 	sudo npm install -g fixjson
 	sudo apt install xsel
 	sudo apt install universal-ctags
+	sudo apt install notify-osd
 }
 
 function ConfigProxyWget()

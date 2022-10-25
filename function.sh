@@ -184,3 +184,7 @@ function obmc-copy-ci-logs()
 	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/logs ./
 }
 
+function alarm_clock()
+{
+	echo "notify-send --icon=gtk-info Info '$1'" | at "$2"
+}
