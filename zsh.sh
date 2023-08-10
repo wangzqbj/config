@@ -6,7 +6,8 @@ source $SHELL_FOLDER/tools/antigen.zsh
 antigen use oh-my-zsh
 
 antigen bundle command-not-found
-antigen theme robbyrussell
+#antigen theme robbyrussell
+antigen theme romkatv/powerlevel10k
 
 antigen bundle skywind3000/z.lua
 antigen bundle changyuheng/fz
@@ -28,3 +29,5 @@ compdef vman="man"
 alias man="vman"
 
 compdef _rg hg
+
+setopt extended_glob
