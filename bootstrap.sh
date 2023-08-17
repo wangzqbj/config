@@ -37,7 +37,7 @@ function InstallTools()
 	sudo apt remove ibus
 
 	sudo apt install cmake
-	sudo apt install gonme-tweaks
+	sudo apt install gnome-tweaks
 
 	sudo apt install chrpath diffstat gawk lz4
 	sudo apt install clang-format
@@ -50,6 +50,7 @@ function InstallTools()
 	sudo apt install xsel
 	sudo apt install universal-ctags
 	sudo apt install notify-osd
+	sudo apt autoremvoe
 }
 
 function ConfigProxyWget()
