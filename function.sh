@@ -188,3 +188,4 @@ function alarm_clock()
 {
 	echo "notify-send --icon=gtk-info Info '$1'" | at "$2"
 }
+

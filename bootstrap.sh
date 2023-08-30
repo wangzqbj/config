@@ -25,6 +25,7 @@ function InstallTools()
 {
 	sudo apt install curl
 	sudo apt install vim
+	sudo apt install lua5.4
 	sudo apt install git
 	sudo apt install ripgrep
 	sudo apt install socat
