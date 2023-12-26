@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+BINARY=/usr/bin/clang-format
+MANPAGE=/usr/share/man/man1/clang-format
+
+function register_clang_format_version {
+    local version=$1
+    local priority=$2
+
+    update-alternatives \
+      --install ${BINARY} clang-format ${BINARY}-${version} ${priority} \
+      --slave ${MANPAGE}.1.gz clang-format.1.gz ${MANPAGE}-${version}.1.gz
+}
+
+register_clang_format_version 17 100
+register_clang_format_version 14 20
+
