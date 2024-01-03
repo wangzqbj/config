@@ -1,0 +1,9 @@
+[Unit]
+Description=Clean bitbake sstate-cache every day
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=1day
+
+[Install]
+WantedBy=timers.target

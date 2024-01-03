@@ -1,0 +1,7 @@
+[Unit]
+Description=Cleanup sstate-cache
+
+[Service]
+
+Type=simple
+ExecStart=%h/.local/etc/config/tools/sstate-cache-cleanup.sh %h/workspace/bitbake_sharedstatecache
