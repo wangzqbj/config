@@ -36,3 +36,7 @@ fi
 if [ -f "$HOME/.local/etc/config/function.sh" ]; then
 	. "${HOME}/.local/etc/config/function.sh"
 fi
+
+if [ -f "$HOME/.local/etc/config/openbmc-workflow-function.sh" ]; then
+	. "${HOME}/.local/etc/config/openbmc-workflow-function.sh"
+fi
