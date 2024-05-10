@@ -69,9 +69,9 @@ function weather()
 {
 	local city="${1:-jinan}"
 	if [ -x "$(which wget)" ]; then
-		wget -qO- "wttr.in/~${city}?m"
+		wget -qO- "wttr.in/~${city}?1m"
 	elif [ -x "$(which curl)" ]; then
-		curl "wttr.in/~${city}?m"
+		curl "wttr.in/~${city}?1m"
 	fi
 
 }

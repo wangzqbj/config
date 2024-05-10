@@ -76,3 +76,12 @@ function obmc-copy-ci-logs()
 	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/output.xml ./
 	scp -r openbmc-ci:/home/openbmc/openbmc-ci/qemu-robot-ci/openbmc-build-scripts/logs ./
 }
+
+function bbgohome()
+{
+	if [ -z "$BBPATH" ]; then
+	       log_warn "variable BBPATH is not set"
+	       return
+	fi
+	cd "$BBPATH/../../"
+}

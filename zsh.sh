@@ -22,12 +22,4 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen apply
 
-autoload -Uz compinit
-compinit
-compdef vman="man"
-
-alias man="vman"
-
-compdef _rg hg
-
 setopt extended_glob
